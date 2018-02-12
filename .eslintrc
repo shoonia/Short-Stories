@@ -17,7 +17,8 @@
       "es6": true,
       "commonjs": true,
       "browser": true,
-      "node": true
+      "node": true,
+      "mocha": true
     },
     "rules": {
       "react/prop-types": "warn",
