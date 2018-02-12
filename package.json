@@ -3,7 +3,20 @@
   "version": "1.0.0",
   "description": "",
   "main": "./server/index.js",
-  "scripts": {},
+  "scripts": {
+    "webpack": "webpack --color --watch"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "css-loader": "^0.28.9",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "html-webpack-plugin": "^2.30.1",
+    "style-loader": "^0.20.1",
+    "webpack": "^3.11.0"
+  },
   "keywords": [],
   "author": "Alexander Zaytsev <zaytsev126@gmail.com>",
   "license": "MIT"
