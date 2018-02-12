@@ -32,4 +32,23 @@ router.post('/get-posts-by-page-index', async (req, res) => {
     }
 });
 
+router.post('/get-post-by-id', async (req, res) => {
+    const id = parseInt(req.body.id);
+
+    if (isNaN(id) || id < 1) {
+        return res.status(400).end();
+    }
+
+    try {
+        const [post] = await db('posts').where({ id });
+
+        if (post !== undefined) {
+            return res.status(200).json(post);
+        }
+        res.status(404).end();
+    } catch (e) {
+        res.status(500).end();
+    }
+});
+
 module.exports = router;
