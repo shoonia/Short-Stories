@@ -8,7 +8,7 @@ const Navbar = () => createPortal(
             <NavLink exact to="/" className="nav-link">Home</NavLink>
         </li>
         <li className="nav-item">
-            <NavLink to="/page" className="nav-link">Stories</NavLink>
+            <NavLink to="/page/1" className="nav-link">Stories</NavLink>
         </li>
     </ul>,
     document.getElementById('navbar')

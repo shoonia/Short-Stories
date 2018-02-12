@@ -1,5 +1,7 @@
 import { combineReducers } from 'redux';
 
+import page from './reducers/page';
+
 export default combineReducers({
-    test: () => 'text'
+    page
 });
