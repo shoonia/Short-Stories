@@ -17,10 +17,16 @@ const CONFIG = {
     output: {
         path: PATH.public,
         publicPath: '/',
-        filename: 'bundle.[name].js'
+        filename: 'bundle.[name].js',
+        chunkFilename: 'bundle.[name].[id].js'
     },
     plugins: [
         new webpack.NoEmitOnErrorsPlugin(),
+        new webpack.optimize.CommonsChunkPlugin({
+            async: true,
+            children: true,
+            minChunks: 2
+        }),
         new ExtractTextPlugin({
             filename: 'style.css'
         }),

@@ -5,5 +5,8 @@
             "modules": false,
             "loops": true
         }]
+    ],
+    "plugins": [
+        "syntax-dynamic-import"
     ]
 }
