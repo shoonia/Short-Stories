@@ -15,4 +15,21 @@ router.post('/init', async (req, res) => {
     }
 });
 
+router.post('/get-posts-by-page-index', async (req, res) => {
+    const index = parseInt(req.body.index);
+    const OFFSET = index > 0 ? (index - 1) * LIMIT : 0;
+
+    try {
+        const posts = await db('posts').select('*').orderBy('id', 'DESC')
+            .limit(LIMIT).offset(OFFSET);
+
+        if (posts.length > 0) {
+            return res.status(200).json(posts);
+        }
+        res.status(404).end();
+    } catch (e) {
+        res.status(500).end();
+    }
+});
+
 module.exports = router;
