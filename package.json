@@ -1,0 +1,10 @@
+{
+  "name": "short-stories",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./server/index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "Alexander Zaytsev <zaytsev126@gmail.com>",
+  "license": "MIT"
+}
