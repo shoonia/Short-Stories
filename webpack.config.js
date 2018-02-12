@@ -18,7 +18,7 @@ const CONFIG = {
         path: PATH.public,
         publicPath: '/',
         filename: 'bundle.[name].js',
-        chunkFilename: 'bundle.[name].[id].js'
+        chunkFilename: 'bundle.[name].js'
     },
     plugins: [
         new webpack.NoEmitOnErrorsPlugin(),
