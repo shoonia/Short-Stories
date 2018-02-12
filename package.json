@@ -4,9 +4,14 @@
   "description": "",
   "main": "./server/index.js",
   "scripts": {
-    "webpack": "webpack --color --watch"
+    "webpack": "webpack --color --watch",
+    "start": "node ./server"
   },
-  "dependencies": {},
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "compression": "^1.7.1",
+    "express": "^4.16.2"
+  },
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
