@@ -1,7 +1,8 @@
 import { SET_PAGE } from '../types';
 
 const initialState = {
-    isFirstVisit: true
+    isFirstVisit: true,
+    totalPages: 1
 };
 
 export default function pageReducer (state = initialState, action = {}) {

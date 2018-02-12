@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 import { SET_PAGE } from '../types';
 
 export function setPageSuccess (payload) {
@@ -8,9 +10,11 @@ export function setPageSuccess (payload) {
 }
 
 export function setPage () {
-    return dispatch => {
-        dispatch(setPageSuccess({
-            isFirstVisit: false
-        }));
-    };
+    return dispatch => axios.post('/page/init')
+        .then(res => {
+            dispatch(setPageSuccess({
+                isFirstVisit: false,
+                totalPages: res.data.totalPages
+            }));
+        });
 }
