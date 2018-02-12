@@ -13,6 +13,7 @@ app.use(bodyParser.json());
 
 app.get('/*', (req, res) => res.sendFile(indexHTML));
 
+/* eslint no-console: off */
 app.listen(PORT, () => console.info('Server is running on port:', PORT));
 
 module.exports = app;
