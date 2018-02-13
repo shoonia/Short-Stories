@@ -8,7 +8,9 @@ const Page = ({ match, history }) => {
     const index = (!isNaN(i) && i > 0) ? i : 1;
 
     return (
-        <PageComponent index={index} history={history} />
+        <div className="container">
+            <PageComponent index={index} history={history} />
+        </div>
     );
 };
 
