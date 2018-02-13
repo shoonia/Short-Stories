@@ -1,7 +1,7 @@
 {
   "name": "short-stories",
   "version": "1.0.0",
-  "description": "",
+  "description": "Single page website with a collection of short stories",
   "main": "./server/index.js",
   "scripts": {
     "dev-server": "nodemon --watch ./server --exec node-env-run -- ./server",
@@ -50,6 +50,13 @@
     "prop-types": "^15.6.0",
     "style-loader": "^0.20.1",
     "webpack": "^3.11.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shoonia/short-stories.git"
+  },
+  "engines":{
+    "node":"8.9.1"
   },
   "keywords": [],
   "author": "Alexander Zaytsev <zaytsev126@gmail.com>",

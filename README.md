@@ -1,2 +1,3 @@
 # Short Stories
+Single page website with a collection of short stories
 > in process ...
