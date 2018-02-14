@@ -1,14 +1,14 @@
-import { SET_PAGE } from '../types';
+import { SET_PAGINATION } from '../types';
 
 const initialState = {
     isFirstVisit: true,
-    totalPages: 1
+    pageCount: 1
 };
 
-export default function pageReducer (state = initialState, action = {}) {
+export default function paginationReducer (state = initialState, action = {}) {
     switch (action.type) {
 
-    case SET_PAGE:
+    case SET_PAGINATION:
         return {
             ...state,
             ...action.payload

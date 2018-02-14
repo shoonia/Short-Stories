@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
 
-import page from './reducers/page';
+import pagination from './reducers/pagination';
 import posts from './reducers/posts';
 
 export default combineReducers({
-    page,
+    pagination,
     posts
 });

@@ -1,20 +1,20 @@
 import axios from 'axios';
 
-import { SET_PAGE } from '../types';
+import { SET_PAGINATION } from '../types';
 
-export function setPageSuccess (payload) {
+export function setPaginagionSuccess (payload) {
     return {
-        type: SET_PAGE,
+        type: SET_PAGINATION,
         payload
     };
 }
 
-export function setPage () {
+export function setPagination () {
     return dispatch => axios.post('/page/init')
         .then(res => {
-            dispatch(setPageSuccess({
+            dispatch(setPaginagionSuccess({
                 isFirstVisit: false,
-                totalPages: res.data.totalPages
+                pageCount: res.data.pageCount
             }));
         });
 }

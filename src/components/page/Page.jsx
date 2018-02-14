@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Pagination from '../pagination/Pagination.jsx';
 import PageComponent from './PageComponent.jsx';
 
 const Page = ({ match, history }) => {
@@ -9,6 +10,7 @@ const Page = ({ match, history }) => {
 
     return (
         <div className="container">
+            <Pagination index={index} history={history} />
             <PageComponent index={index} history={history} />
         </div>
     );

@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Loadable from 'react-loadable';
 
-import { setPage } from '../../store/actions/page';
 import { fetchPostsByPageIndex } from '../../store/actions/posts';
 import Loader from '../loader/Loader.jsx';
 import PageList from './PageList.jsx';
@@ -21,10 +20,6 @@ class PageComponent extends React.PureComponent {
 
     componentDidMount () {
         this.findPage(this.props.index);
-
-        if (this.props.isFirstVisit) {
-            this.props.setPage();
-        }
     }
 
     componentWillReceiveProps (nextProps) {
@@ -62,19 +57,15 @@ class PageComponent extends React.PureComponent {
 PageComponent.propTypes = {
     index: PropTypes.number.isRequired,
     history: PropTypes.object.isRequired,
-    isFirstVisit: PropTypes.bool.isRequired,
-    setPage: PropTypes.func.isRequired,
     fetchPostsByPageIndex: PropTypes.func.isRequired,
     posts: PropTypes.objectOf(PropTypes.array).isRequired,
 };
 
 const mapStateToProps = state => ({
-    isFirstVisit: state.page.isFirstVisit,
     posts: state.posts
 });
 
 const mapStateToDispatch = {
-    setPage,
     fetchPostsByPageIndex
 };
 
