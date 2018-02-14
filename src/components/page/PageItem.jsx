@@ -16,7 +16,7 @@ const PageItem = ({ id, title, author, text, created_at}) => {
             </div>
             <div className="card-body">
                 <p>{ shortContent }</p>
-                <time dataTime={created_at}>{ created_at }</time>
+                <time dateTime={created_at}>{ created_at }</time>
             </div>
         </section>
     );

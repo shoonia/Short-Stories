@@ -16,6 +16,11 @@ const Page = Loadable({
     loading
 });
 
+const Post = Loadable({
+    loader: () => import('./post/Post.jsx' /* webpackChunkName: "post" */),
+    loading
+});
+
 const NotFound = Loadable({
     loader: () => import('./not-found/NotFound.jsx' /* webpackChunkName: "not-found" */),
     loading
@@ -25,6 +30,7 @@ const RouterLoader = () => (
     <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/page/:index" component={Page} />
+        <Route exact path="/post/:id" component={Post} />
         <Route component={NotFound} />
     </Switch>
 );
