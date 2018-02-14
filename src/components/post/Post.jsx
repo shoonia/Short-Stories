@@ -6,6 +6,7 @@ import _find from 'lodash-es/find';
 
 import Loader from '../loader/Loader.jsx';
 import PostView from './PostView.jsx';
+import { fetchPostById } from '../../store/actions/posts';
 
 const NotFound = Loadable({
     loader: () => import('../not-found/NotFound.jsx' /* webpackChunkName: "not-found" */),
@@ -24,6 +25,8 @@ class Post extends React.PureComponent {
 
         if (currentPost !== undefined) {
             this.setState({ currentPost });
+        } else {
+            this.fetchPost(id);
         }
     }
 
@@ -36,6 +39,17 @@ class Post extends React.PureComponent {
                 return item;
             }
         }
+    }
+
+    fetchPost = id => {
+        this.props.fetchPostById(id)
+            .then(currentPost => {
+                if (currentPost !== null) {
+                    this.setState({ currentPost, isPostExist: true });
+                } else {
+                    this.setState({ isPostExist: false });
+                }
+            });
     }
 
     render () {
@@ -55,11 +69,16 @@ Post.propTypes = {
             id: PropTypes.string.isRequired
         }).isRequired
     }).isRequired,
-    posts: PropTypes.objectOf(PropTypes.array).isRequired
+    posts: PropTypes.objectOf(PropTypes.array).isRequired,
+    fetchPostById: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
     posts: state.posts
 });
 
-export default connect(mapStateToProps)(Post);
+const mapStateToDispatch = {
+    fetchPostById
+};
+
+export default connect(mapStateToProps, mapStateToDispatch)(Post);

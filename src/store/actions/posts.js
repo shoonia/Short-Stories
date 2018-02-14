@@ -22,3 +22,12 @@ export function fetchPostsByPageIndex (index) {
             return null;
         });
 }
+
+export function fetchPostById (id) {
+    return () => axios.post('/page/get-post-by-id', { id })
+        .then(res => {
+            return res.data;
+        }).catch(() => {
+            return null;
+        });
+}
