@@ -1,9 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import Loadable from 'react-loadable';
 
 import { setPage } from '../../store/actions/page';
 import { fetchPostsByPageIndex } from '../../store/actions/posts';
+import Loader from '../loader/Loader.jsx';
+import PageList from './PageList.jsx';
+
+const NotFound = Loadable({
+    loader: () => import('../not-found/NotFound.jsx' /* webpackChunkName: "not-found" */),
+    loading: Loader
+});
 
 class PageComponent extends React.PureComponent {
     state = {
@@ -43,9 +51,11 @@ class PageComponent extends React.PureComponent {
     };
 
     render () {
-        return (
-            <div>Page {this.props.index}</div>
-        );
+        const { isPageExist, currentPage } = this.state;
+
+        return isPageExist
+            ? <PageList items={currentPage} />
+            : <NotFound />;
     }
 }
 
