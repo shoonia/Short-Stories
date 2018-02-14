@@ -26,17 +26,27 @@ class Pagination extends React.PureComponent {
                     pageCount={pageCount}
                     forcePage={index - 1}
                     onPageChange={this.onPageChange}
+
                     pageRangeDisplayed={2}
                     marginPagesDisplayed={1}
+
                     containerClassName="pagination"
                     pageClassName="page-item"
                     pageLinkClassName="page-link"
                     activeClassName="active"
                     disabledClassName="disabled"
-                    previousClassName="btn btn-link"
-                    nextClassName="btn btn-link"
-                    previousLinkClassName=""
-                    nextLinkClassName=""
+
+                    previousClassName="page-item"
+                    nextClassName="page-item"
+
+                    previousLabel={<span>&laquo;</span>}
+                    nextLabel={<span>&raquo;</span>}
+
+                    previousLinkClassName="page-link"
+                    nextLinkClassName="page-link"
+
+                    breakLabel={<span className="page-link">...</span>}
+                    breakClassName="page-item disabled"
                 />
             </nav>
         );
