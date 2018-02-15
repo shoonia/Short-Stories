@@ -11,6 +11,7 @@ const app = express();
 
 app.use(compression());
 app.use('/', express.static('public'));
+app.use('/', express.static('seo'));
 app.use(bodyParser.json());
 app.use('/page', page);
 
