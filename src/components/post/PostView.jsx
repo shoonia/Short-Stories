@@ -2,18 +2,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import PostText from './PostText.jsx';
-import { FadeInMain } from '../animations';
+import { FadeIn } from '../animations';
+import { toLocaleString } from '../../utils/date';
 
 const PostView = ({ title, author, text, created_at }) => (
-    <FadeInMain className="container">
-        <h1 className="display-4">{ title }</h1>
-        <span className="lead">{ author }</span>
-        <hr />
-        <PostText text={text} />
-        <time dateTime={created_at} className="text-muted">
-            {created_at}
-        </time>
-    </FadeInMain>
+    <FadeIn className="container">
+        <main className="col-md-8 mt-5 mb-3">
+            <h1 className="display-4">{ title }</h1>
+            <span className="lead">{ author }</span>
+            <hr />
+            <PostText text={text} />
+            <time dateTime={created_at} className="text-muted">
+                {toLocaleString(created_at)}
+            </time>
+        </main>
+    </FadeIn>
 );
 
 PostView.propTypes = {

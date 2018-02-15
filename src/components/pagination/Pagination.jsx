@@ -21,7 +21,9 @@ class Pagination extends React.PureComponent {
         const { pageCount, index } = this.props;
 
         return (
-            <nav aria-label="Page navigation">
+            <nav
+                className="row justify-content-center pt-3 pb-3"
+                aria-label="Page navigation">
                 <ReactPaginate
                     pageCount={pageCount}
                     forcePage={index - 1}

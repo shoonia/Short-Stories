@@ -3,10 +3,6 @@ import fadeIn from 'react-animations/lib/fade-in';
 
 const animationFadeIn = keyframes`${fadeIn}`;
 
-export const FadeInMain = styled.main`
-    animation: .5s ${animationFadeIn};
-`;
-
-export const FadeInSection = styled.section`
+export const FadeIn = styled.div`
     animation: .5s ${animationFadeIn};
 `;
