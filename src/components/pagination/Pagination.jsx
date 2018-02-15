@@ -2,8 +2,16 @@ import React from 'react';
 import { connect } from 'react-redux';
 import ReactPaginate from 'react-paginate';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 import { setPagination } from '../../store/actions/pagination';
+
+const Nav = styled.nav`
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+`;
 
 class Pagination extends React.PureComponent {
 
@@ -21,7 +29,7 @@ class Pagination extends React.PureComponent {
         const { pageCount, index } = this.props;
 
         return (
-            <nav
+            <Nav
                 className="row justify-content-center pt-3 pb-3"
                 aria-label="Page navigation">
                 <ReactPaginate
@@ -50,7 +58,7 @@ class Pagination extends React.PureComponent {
                     breakLabel={<span className="page-link">...</span>}
                     breakClassName="page-item disabled"
                 />
-            </nav>
+            </Nav>
         );
     }
 }
