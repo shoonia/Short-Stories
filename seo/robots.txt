@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: 
+Host: short-stories.herokuapp.com
+Sitemap: https://short-stories.herokuapp.com/sitemap.xml
