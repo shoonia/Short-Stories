@@ -2,9 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import PostText from './PostText.jsx';
+import { FadeInMain } from '../animations';
 
 const PostView = ({ title, author, text, created_at }) => (
-    <main className="container">
+    <FadeInMain className="container">
         <h1 className="display-4">{ title }</h1>
         <span className="lead">{ author }</span>
         <hr />
@@ -12,7 +13,7 @@ const PostView = ({ title, author, text, created_at }) => (
         <time dateTime={created_at} className="text-muted">
             {created_at}
         </time>
-    </main>
+    </FadeInMain>
 );
 
 PostView.propTypes = {

@@ -2,12 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
+import { FadeInSection } from '../animations';
+
 const PageItem = ({ id, title, author, text, created_at}) => {
     const href = `/post/${id}`;
     const shortContent = text.slice(0, 136) + ' ...';
 
     return (
-        <section className="card mb-4">
+        <FadeInSection className="card mb-4">
             <div className="card-header">
                 <h3 className="card-title">
                     <Link to={href}>{ title }</Link>
@@ -18,7 +20,7 @@ const PageItem = ({ id, title, author, text, created_at}) => {
                 <p>{ shortContent }</p>
                 <time dateTime={created_at}>{ created_at }</time>
             </div>
-        </section>
+        </FadeInSection>
     );
 };
 
