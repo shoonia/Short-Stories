@@ -3,7 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const compression = require('compression');
 
-const page = require('./routes/page');
+const posts = require('./routes/posts');
 
 const PORT = process.env.PORT || 3000;
 const indexHTML = path.resolve(__dirname, '../public/index.html');
@@ -13,7 +13,7 @@ app.use(compression());
 app.use('/', express.static('public'));
 app.use('/', express.static('seo'));
 app.use(bodyParser.json());
-app.use('/page', page);
+app.use('/posts', posts);
 
 app.get('/*', (req, res) => res.sendFile(indexHTML));
 

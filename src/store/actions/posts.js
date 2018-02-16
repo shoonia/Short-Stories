@@ -9,7 +9,7 @@ export function setPostsSuccess (posts) {
 }
 
 export function fetchPostsByPageIndex (index) {
-    return dispatch => axios.post('/page/get-posts-by-page-index', { index })
+    return dispatch => axios.post('/posts/get-posts-by-page-index', { index })
         .then(res => {
             if (Array.isArray(res.data) && res.data.length > 0) {
                 dispatch(setPostsSuccess({
@@ -24,7 +24,7 @@ export function fetchPostsByPageIndex (index) {
 }
 
 export function fetchPostById (id) {
-    return () => axios.post('/page/get-post-by-id', { id })
+    return () => axios.post('/posts/get-post-by-id', { id })
         .then(res => {
             return res.data;
         }).catch(() => {

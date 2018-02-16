@@ -5,7 +5,7 @@ const db = require('../db');
 const router = express.Router();
 const LIMIT = 8;
 
-router.post('/init', async (req, res) => {
+router.post('/init-pagination', async (req, res) => {
     try {
         const [data] = await db('posts').count('id AS count');
         const pageCount = Math.ceil( (data.count || 1) / LIMIT );

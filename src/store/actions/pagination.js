@@ -10,7 +10,7 @@ export function setPaginagionSuccess (payload) {
 }
 
 export function setPagination () {
-    return dispatch => axios.post('/page/init')
+    return dispatch => axios.post('/posts/init-pagination')
         .then(res => {
             dispatch(setPaginagionSuccess({
                 isFirstVisit: false,
