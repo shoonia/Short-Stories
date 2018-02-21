@@ -43,6 +43,7 @@ const CONFIG = {
             template: './index.html',
             favicon: './images/favicon.ico',
             minify: {
+                html5: true,
                 removeComments: IS_PRODUCTION,
                 collapseWhitespace: IS_PRODUCTION
             }

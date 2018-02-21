@@ -4,11 +4,11 @@ import PropTypes from 'prop-types';
 import PageItem from './PageItem.jsx';
 
 const PageList = ({ items }) => (
-    <div className="row" role="group">
+    <main className="row">
         { items.map(item => (
             <PageItem key={item.id} {...item} />
         )) }
-    </div>
+    </main>
 );
 
 PageList.propTypes = {

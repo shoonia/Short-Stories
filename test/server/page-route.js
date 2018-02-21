@@ -1,20 +1,21 @@
-const { agent } = require('./config');
+const { agent } = require('../config');
 
-describe('Page route', () => {
+describe('Posts route', () => {
 
-    describe('/init', () => {
+    describe('/init-pagination', () => {
         it('POST 200: Ok', done => {
-            agent.post('/page/init').end((err, res) => {
-                res.should.have.status(200);
-                res.body.should.have.property('pageCount');
-                done();
-            });
+            agent.post('/posts/init-pagination')
+                .end((err, res) => {
+                    res.should.have.status(200);
+                    res.body.should.have.property('pageCount');
+                    done();
+                });
         });
     });
 
     describe('/get-posts-by-page-index', () => {
         it('POST 200: Ok', done => {
-            agent.post('/page/get-posts-by-page-index')
+            agent.post('/posts/get-posts-by-page-index')
                 .send({ index: 1 })
                 .end((err, res) => {
                     res.should.have.status(200);
@@ -22,7 +23,7 @@ describe('Page route', () => {
                 });
         });
         it('POST 404: Not Found', done => {
-            agent.post('/page/get-posts-by-page-index')
+            agent.post('/posts/get-posts-by-page-index')
                 .send({ index: 999999999 })
                 .end((err, res) => {
                     res.should.have.status(404);
@@ -33,7 +34,7 @@ describe('Page route', () => {
 
     describe('/get-post-by-id', () => {
         it('POST 200: Ok', done => {
-            agent.post('/page/get-post-by-id')
+            agent.post('/posts/get-post-by-id')
                 .send({ id: 1 })
                 .end((err, res) => {
                     res.should.have.status(200);
@@ -45,7 +46,7 @@ describe('Page route', () => {
                 });
         });
         it('POST 400: Bad Request (sub zero)', done => {
-            agent.post('/page/get-post-by-id')
+            agent.post('/posts/get-post-by-id')
                 .send({ id: -1 })
                 .end((err, res) => {
                     res.should.have.status(400);
@@ -53,7 +54,7 @@ describe('Page route', () => {
                 });
         });
         it('POST 400: Bad Request (string)', done => {
-            agent.post('/page/get-post-by-id')
+            agent.post('/posts/get-post-by-id')
                 .send({ id: 'wrong' })
                 .end((err, res) => {
                     res.should.have.status(400);
@@ -61,7 +62,7 @@ describe('Page route', () => {
                 });
         });
         it('POST 404: Not Found', done => {
-            agent.post('/page/get-post-by-id')
+            agent.post('/posts/get-post-by-id')
                 .send({ id: 999999999 })
                 .end((err, res) => {
                     res.should.have.status(404);

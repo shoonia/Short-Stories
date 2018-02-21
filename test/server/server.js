@@ -1,4 +1,4 @@
-const { agent } = require('./config');
+const { agent } = require('../config');
 
 describe('Server running', () => {
 

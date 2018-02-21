@@ -10,8 +10,8 @@ const PageItem = ({ id, title, author, text, created_at}) => {
     const shortContent = text.slice(0, 136) + ' ...';
 
     return (
-        <FadeIn className="col-md-6">
-            <section className="card mb-4">
+        <article className="col-md-6">
+            <FadeIn className="card mb-4">
                 <div className="card-header">
                     <h3 className="card-title">
                         <Link to={href}>{ title }</Link>
@@ -24,8 +24,8 @@ const PageItem = ({ id, title, author, text, created_at}) => {
                         {toLocaleString(created_at)}
                     </time>
                 </div>
-            </section>
-        </FadeIn>
+            </FadeIn>
+        </article>
     );
 };
 

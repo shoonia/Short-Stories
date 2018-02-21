@@ -7,7 +7,7 @@
     "dev-server": "nodemon --watch ./server --exec node-env-run -- ./server",
     "webpack": "webpack --color --watch",
     "eslit": "eslint ./src ./server --color",
-    "mocha": "mocha --colors",
+    "mocha": "mocha --colors ./test/**/*.js",
     "postcss": "postcss ./public/*.css --replace",
     "prod": "cross-env NODE_ENV=production webpack --color --progress",
     "build": "npm run prod && npm run postcss",
