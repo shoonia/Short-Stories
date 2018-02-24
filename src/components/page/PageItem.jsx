@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { FadeIn } from '../animations';
 import { toLocaleString } from '../../utils/date';
 
-const PageItem = ({ id, title, author, text, created_at}) => {
+const PageItem = ({ id, title, author, text, created_at }) => {
     const href = `/post/${id}`;
     const shortContent = text.slice(0, 136) + ' ...';
 
@@ -14,12 +14,12 @@ const PageItem = ({ id, title, author, text, created_at}) => {
             <FadeIn className="card mb-4">
                 <div className="card-header">
                     <h3 className="card-title">
-                        <Link to={href}>{ title }</Link>
+                        <Link to={href}>{title}</Link>
                     </h3>
-                    <span className="lead">{ author }</span>
+                    <span className="lead">{author}</span>
                 </div>
                 <div className="card-body">
-                    <p>{ shortContent }</p>
+                    <p>{shortContent}</p>
                     <time className="text-muted" dateTime={created_at}>
                         {toLocaleString(created_at)}
                     </time>
