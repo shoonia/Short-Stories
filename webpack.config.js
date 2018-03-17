@@ -13,6 +13,8 @@ const PATH = {
 
 const CONFIG = {
     context: PATH.src,
+    watch: !IS_PRODUCTION,
+    devtool: IS_PRODUCTION ? false : 'source-map',
     entry: [
         './index.js',
         './index.css'
