@@ -1,0 +1,3 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[6],{12:function(e,n,t){"use strict";t.d(n,"a",function(){return o});var a=t(21),r=t(41);const o=a["a"].div`
+    animation: .5s ${a["b"]`${t.n(r).a}`};
+`},95:function(e,n,t){"use strict";t.r(n);var a=t(0),r=t.n(a),o=t(9),s=t(12);n.default=class extends r.a.PureComponent{render(){return r.a.createElement(a.Fragment,null,r.a.createElement(s.a,{className:"jumbotron jumbotron-fluid text-center",role:"banner"},r.a.createElement("h2",{className:"display-4 mb-5"},"Short Stories"),r.a.createElement(o.b,{to:"/page/1",className:"btn btn-lg btn-info pr-5 pl-5"},"Read All")))}}}}]);

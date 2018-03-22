@@ -3,7 +3,10 @@
         "react",
         ["env", {
             "modules": false,
-            "loops": true
+            "loops": true,
+            "targets": {
+                "chrome": 60
+            }
         }]
     ],
     "plugins": [

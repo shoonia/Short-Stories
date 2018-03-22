@@ -1,7 +1,7 @@
 const path = require('path');
-const webpack = require('webpack');
 const HTMLPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 const NODE_ENV = process.env.NODE_ENV;
 const IS_PRODUCTION = NODE_ENV === 'production';
@@ -15,28 +15,18 @@ const CONFIG = {
     context: PATH.src,
     watch: !IS_PRODUCTION,
     devtool: IS_PRODUCTION ? false : 'source-map',
+    mode: IS_PRODUCTION ? 'production' : 'development',
     entry: [
         './index.js',
-        './index.css'
+        './index.scss'
     ],
     output: {
         path: PATH.public,
         publicPath: '/',
         filename: 'bundle.[name].js',
-        chunkFilename: 'bundle.[name].js'
+        chunkFilename: 'chunk.[id].js'
     },
     plugins: [
-        new webpack.NoEmitOnErrorsPlugin(),
-        new webpack.optimize.CommonsChunkPlugin({
-            async: true,
-            children: true,
-            minChunks: 2
-        }),
-        new webpack.DefinePlugin({
-            'process.env': {
-                NODE_ENV: JSON.stringify(NODE_ENV)
-            }
-        }),
         new ExtractTextPlugin({
             filename: 'style.css'
         }),
@@ -61,8 +51,7 @@ const CONFIG = {
             }, {
                 test: /.css$/,
                 use: ExtractTextPlugin.extract({
-                    fallback: 'style-loader',
-                    use: ['css-loader']
+                    use: [ 'css-loader', 'sass-loader' ]
                 })
             }
         ]
@@ -71,16 +60,6 @@ const CONFIG = {
 
 if (IS_PRODUCTION) {
     CONFIG.plugins.push(
-        new webpack.optimize.ModuleConcatenationPlugin(),
-        new webpack.optimize.UglifyJsPlugin({
-            comments: false,
-            compress: {
-                warnings: false,
-                drop_console: true,
-                unsafe: true
-            }
-        }),
-        // CSS:
         new (require('optimize-css-assets-webpack-plugin'))({
             cssProcessorOptions: {
                 discardComments: { removeAll: true }
@@ -93,6 +72,26 @@ if (IS_PRODUCTION) {
             ])
         })
     );
+    CONFIG.optimization = {
+        minimizer: [
+            new UglifyJSPlugin({
+                uglifyOptions: {
+                    ecma: 7,
+                    warnings: false,
+                    output: {
+                        comments: false
+                    },
+                    compress: {
+                        unsafe: true,
+                        unsafe_comps: true,
+                        pure_getters: true,
+                        hoist_funs: true,
+                        drop_console: true
+                    }
+                }
+            })
+        ]
+    };
 }
 
 module.exports = CONFIG;
