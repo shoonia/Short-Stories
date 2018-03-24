@@ -55,24 +55,8 @@ const CONFIG = {
                 })
             }
         ]
-    }
-};
-
-if (IS_PRODUCTION) {
-    CONFIG.plugins.push(
-        new (require('optimize-css-assets-webpack-plugin'))({
-            cssProcessorOptions: {
-                discardComments: { removeAll: true }
-            }
-        }),
-        new (require('purgecss-webpack-plugin'))({
-            paths: (require('glob-all')).sync([
-                path.resolve( PATH.src, './index.html' ),
-                path.resolve( PATH.src, './components/**/*.jsx' )
-            ])
-        })
-    );
-    CONFIG.optimization = {
+    },
+    optimization: {
         minimizer: [
             new UglifyJSPlugin({
                 uglifyOptions: {
@@ -91,7 +75,21 @@ if (IS_PRODUCTION) {
                 }
             })
         ]
-    };
+    }
+};
+
+if (IS_PRODUCTION) {
+    const PurgeCSSPlugin = require('purgecss-webpack-plugin');
+    const globAll = require('glob-all');
+
+    CONFIG.plugins.push(
+        new PurgeCSSPlugin({
+            paths: globAll.sync([
+                path.resolve( PATH.src, './index.html' ),
+                path.resolve( PATH.src, './components/**/*.jsx' )
+            ])
+        })
+    );
 }
 
 module.exports = CONFIG;

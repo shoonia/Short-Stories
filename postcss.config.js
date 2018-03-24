@@ -4,9 +4,15 @@ module.exports = {
         require('postcss-merge-rules')(),
         require('autoprefixer')({
             browsers: [
-                '> 2%',
-                'not ie <= 10'
+                '> 1%',
+                'not ie <= 11'
             ]
+        }),
+        require('cssnano')({
+            discardComments: {
+                removeAll: true,
+                removeAllButFirst: true
+            }
         })
     ]
 };
